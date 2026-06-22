@@ -69,13 +69,23 @@ utils/configs.json
 
 Important configuration options include:
 
-* Model type (`ProtGPT2` or `ProGen`)
+
 * ProGen model size (`small` or `medium`)
 * Tokenization mode
-* Training hyperparameters
+* Rank
+* Alpha
 
 ---
 
+##  Dataset
+The dataset should be placed in `dataset` folder in the format: <br> 
+`dataset/{ptm}/train.csv` <br> 
+`dataset/{ptm}/test.csv` <br> 
+<br> 
+For example for Acetylation we have: <br> 
+`dataset/acet_k/train.csv` <br> 
+`dataset/acet_k/test.csv` <br> 
+Columns in the dataset are Seq, Label, UniProtID, pos, full_sequence. Seq has 51  length input window with site of interest centered in the window. Label column has value `0` and `1`. 0 means absence of PTM and 1 means presence of PTM.
 ## Training
 
 ### ProtGPT2
