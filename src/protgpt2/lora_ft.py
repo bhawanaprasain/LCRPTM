@@ -53,16 +53,66 @@ DEVICE = get_device()
 MODEL_NAME = f"nferruz/ProtGPT2"
 
 
-data = pd.read_csv(f"{train_df_path}")
+# data = pd.read_csv(f"{train_df_path}")
+# data["Label"] = data["Label"].astype(int)
+
+# print("Label distribution (full):")
+# print(data["Label"].value_counts())
+
+# train_df, val_df = train_test_split(
+#     data, test_size=validation_size, stratify=data["Label"], random_state=42
+# )
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# ============================================================
+# LOAD DATA
+# ============================================================
+
+data = pd.read_csv(train_df_path)
 data["Label"] = data["Label"].astype(int)
 
 print("Label distribution (full):")
 print(data["Label"].value_counts())
+if len(data) > 50000:
+    data, _ = train_test_split(
+        data,
+        train_size=50000,
+        # stratify=data["Label"],
+        random_state=seed
+    )
 
+print("\nSelected dataset size:", len(data))
+print("Label distribution (40K):")
+print(data["Label"].value_counts())
+
+# -------------------------------------------------
+# Train / validation split
+# -------------------------------------------------
 train_df, val_df = train_test_split(
-    data, test_size=validation_size, stratify=data["Label"], random_state=42
+    data,
+    test_size=validation_size,
+    stratify=data["Label"],
+    random_state=42
 )
 
+print("\nTrain size:", len(train_df))
+print("Validation size:", len(val_df))
+
+print("\nTrain distribution:")
+print(train_df["Label"].value_counts())
+
+print("\nValidation distribution:")
+print(val_df["Label"].value_counts())
+
+####################
+
+
+print("Label distribution (sampled):")
+print(train_df["Label"].value_counts())
+print(val_df["Label"].value_counts())
 class_weights, n_pos, n_neg = compute_class_weights(train_df)
 print("Train counts  Pos:", n_pos, "Neg:", n_neg)
 print("Class weights  [NEG, POS]:", class_weights.tolist())
