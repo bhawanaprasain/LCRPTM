@@ -2,7 +2,7 @@
  "num_of_epochs" : 10,
  "data_dir" : "../PTMLoRA/ptmgpt2dataset",
  "use_disorder_score" : false,
- "motif_mode": "bpe_token",
+ "motif_mode": "center_split",
  "motif_mode_options": "none || bpe_token || center_split",
  "ptm_alias" : "phos_st",
  "fan_in_fan_out": true,
