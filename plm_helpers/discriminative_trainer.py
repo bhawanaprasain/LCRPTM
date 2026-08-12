@@ -99,7 +99,9 @@ class DiscriminativeTrainer(Trainer):
             else:
                 neg_anchor = two.new_tensor(0.0)
 
-            anchor_loss = self.margin_weight* pos_anchor* self.class_weights[1] + self.margin_weight* neg_anchor* self.class_weights[0]
+            # anchor_loss = self.margin_weight* pos_anchor* self.class_weights[1] + self.margin_weight* neg_anchor* self.class_weights[0]
+            anchor_loss = self.margin_weight* pos_anchor*  + self.margin_weight* neg_anchor
+            
             total = ce  + anchor_loss
             
 

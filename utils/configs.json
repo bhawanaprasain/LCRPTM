@@ -14,7 +14,7 @@
  "seed": 123456,
  "rank" : 16,
  "lora_alpha": 32,
- "lora_dropout" : 0.05,
+ "lora_dropout" : 0.1,
  "target_modules":  "all-linear",
  "target_modules_progen": ["fc_in", "fc_out", "lm_head", "out_proj", "qkv_proj", "wte"] ,
  "general_target_protgpt2": ["c_attn", "c_fc", "c_proj",  "lm_head", "transformer.wte.old_emb", "transformer.wte.new_emb"],
