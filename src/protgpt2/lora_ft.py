@@ -76,10 +76,10 @@ data["Label"] = data["Label"].astype(int)
 
 print("Label distribution (full):")
 print(data["Label"].value_counts())
-if len(data) > 50000:
+if len(data) > 40000:
     data, _ = train_test_split(
         data,
-        train_size=50000,
+        train_size=40000,
         # stratify=data["Label"],
         random_state=seed
     )
