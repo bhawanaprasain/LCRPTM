@@ -4,7 +4,7 @@
  "use_disorder_score" : false,
  "motif_mode": "bpe_token",
  "motif_mode_options": "none || bpe_token || center_split",
- "ptm_alias" : "phos_st",
+ "ptm_alias" : "acet_k",
  "fan_in_fan_out": true,
  "progen_model_size": "small",
  "learning_rate": 2e-4,
