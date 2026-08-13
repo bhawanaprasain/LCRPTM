@@ -74,19 +74,19 @@ from sklearn.model_selection import train_test_split
 data = pd.read_csv(train_df_path)
 data["Label"] = data["Label"].astype(int)
 
-# print("Label distribution (full):")
-# print(data["Label"].value_counts())
-# if len(data) > 70000:
-#     data, _ = train_test_split(
-#         data,
-#         train_size=70000,
-#         # stratify=data["Label"],
-#         random_state=seed
-#     )
+print("Label distribution (full):")
+print(data["Label"].value_counts())
+if len(data) > 40000:
+    data, _ = train_test_split(
+        data,
+        train_size=40000,
+        # stratify=data["Label"],
+        random_state=seed
+    )
 
-# print("\nSelected dataset size:", len(data))
-# print("Label distribution (40K):")
-# print(data["Label"].value_counts())
+print("\nSelected dataset size:", len(data))
+print("Label distribution (40K):")
+print(data["Label"].value_counts())
 
 # -------------------------------------------------
 # Train / validation split
